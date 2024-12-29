@@ -12,7 +12,7 @@ import SectionTitle from './SectionTitle';
 
 const Category = () => {
     return (
-        <div className='container mx-auto text-center my-20 border'>
+        <div className='md:container mx-auto text-center my-20 md:border'>
             <SectionTitle heading={"Order Online"} subHeading={"---from 11am to 10pm---"} />
             <Swiper
                 slidesPerView={4}
@@ -24,33 +24,33 @@ const Category = () => {
                 className="mySwiper"
             >
                 <SwiperSlide>
-                    <div className='p-5'>
-                        <img className='w-[300px] mx-auto' src={slide1} alt="" />
-                        <h2 className='text-3xl uppercase'>Salad</h2>
+                    <div className='p-10'>
+                        <img className='w-[300px] md:mx-auto' src={slide1} alt="" />
+                        <h2 className='md:text-3xl uppercase'>Salad</h2>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <div>
-                        <img className='w-[300px] mx-auto' src={slide2} alt="" />
-                        <h2 className='text-3xl uppercase'>Salad</h2>
+                    <div className='p-10'>
+                        <img className='w-[300px] md:mx-auto' src={slide2} alt="" />
+                        <h2 className='md:text-3xl uppercase'>Pizza</h2>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <div>
-                        <img className='w-[300px] mx-auto' src={slide3} alt="" />
-                        <h2 className='text-3xl uppercase'>Salad</h2>
+                    <div className='p-10'>
+                        <img className='w-[300px] md:mx-auto' src={slide3} alt="" />
+                        <h2 className='md:text-3xl uppercase'>Desert</h2>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <div>
-                        <img className='w-[300px] mx-auto' src={slide4} alt="" />
-                        <h2 className='text-3xl uppercase'>Salad</h2>
+                    <div className='p-10'>
+                        <img className='w-[300px] md:mx-auto' src={slide4} alt="" />
+                        <h2 className='md:text-3xl uppercase'>Cake</h2>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <div>
-                        <img className='w-[300px] mx-auto' src={slide5} alt="" />
-                        <h2 className='text-3xl uppercase'>Salad</h2>
+                    <div className='p-10'>
+                        <img className='w-[300px] md:mx-auto' src={slide5} alt="" />
+                        <h2 className='md:text-3xl uppercase'>Salad</h2>
                     </div>
                 </SwiperSlide>
             </Swiper>
