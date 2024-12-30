@@ -5,7 +5,7 @@ const Navbar = () => {
 
     const links = <div className="flex gap-5 items-center">
         <Link to="/">Home</Link>
-        <Link to="/">Home</Link>
+        <Link to="/menu">OurMenu</Link>
         <Link to="/">Home</Link>
         <Link to="/">Home</Link>
         <Link to="/">Home</Link>
