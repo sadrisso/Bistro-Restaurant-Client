@@ -7,6 +7,7 @@ import dessertImg from '../assets/menu/dessert-bg.jpeg'
 import pizzaImg from '../assets/menu/pizza-bg.jpg'
 import saladImg from '../assets/menu/salad-bg.jpg'
 import soupImg from '../assets/menu/soup-bg.jpg'
+import SectionTitle from '../components/SectionTitle';
 
 const OurMenu = () => {
 
@@ -25,11 +26,12 @@ const OurMenu = () => {
 
             <Cover img={menuImg} title="our menu" />
 
-            <MenuCategory items={offer}/>
-            <MenuCategory items={dessert} title="Dessert" img={dessertImg}/>
-            <MenuCategory items={pizza} title="Pizza" img={pizzaImg}/>
-            <MenuCategory items={salad} title="Salad" img={saladImg}/>
-            <MenuCategory items={soup} title="Soup" img={soupImg}/>
+            <SectionTitle heading="Today's Offer" subHeading="---Don't Miss---" />
+            <MenuCategory items={offer} />
+            <MenuCategory items={dessert} title="Dessert" img={dessertImg} />
+            <MenuCategory items={pizza} title="Pizza" img={pizzaImg} />
+            <MenuCategory items={salad} title="Salad" img={saladImg} />
+            <MenuCategory items={soup} title="Soup" img={soupImg} />
         </div>
     );
 };
