@@ -1,10 +1,14 @@
 import Cover from "../components/Cover";
 import contactImg from '../assets/contact/banner.jpg'
 import SectionTitle from "../components/SectionTitle";
+import { Helmet } from "react-helmet-async";
 
 const Contact = () => {
     return (
         <div>
+            <Helmet>
+                <title>Bistro | Contact Us</title>
+            </Helmet>
             <Cover title="Contact Us" img={contactImg} />
             <SectionTitle heading="Our Location" subHeading="---Visit Us---" />
 
@@ -54,8 +58,8 @@ const Contact = () => {
                             <input type="text" placeholder="phone" className="input input-bordered" required />
                         </div>
                         <label className="label mt-5">
-                                <span className="label-text">Message*</span>
-                            </label>
+                            <span className="label-text">Message*</span>
+                        </label>
                         <textarea className="resize-none textarea textarea-bordered" placeholder="send your message here"></textarea>
                         <div className="form-control mt-6">
                             <button className="btn btn-neutral w-full mx-auto md:w-1/3">Send Message</button>
