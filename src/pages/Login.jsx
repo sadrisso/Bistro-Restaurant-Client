@@ -3,6 +3,17 @@ import { Link } from "react-router-dom";
 
 
 const Login = () => {
+
+    const handleLogin = (e) => {
+        e.preventDefault()
+
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        const loginInfo = {email, password}
+        console.log(loginInfo)
+    }
+
     return (
 
         <div>
@@ -13,19 +24,19 @@ const Login = () => {
                 <div className="hero bg-base-200 min-h-screen w-full md:w-2/3 mx-auto">
 
                     <div className="w-full md:w-2/3 mx-auto">
-                        <form className="card-body">
+                        <form className="card-body" onSubmit={handleLogin}>
                             <h1 className="text-4xl text-center">Login</h1>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" placeholder="email" className="input input-bordered" required />
+                                <input type="email" name="email" placeholder="email" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" placeholder="password" className="input input-bordered" required />
+                                <input type="password" name="password" placeholder="password" className="input input-bordered" required />
                             </div>
 
                             <div className="form-control mt-6">
