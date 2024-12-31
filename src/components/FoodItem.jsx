@@ -15,7 +15,7 @@ const FoodItem = ({item}) => {
                         alt="Shoes" />
                 </figure>
                 <div className="card-body">
-                    <h2 className="card-title">{name}</h2>
+                    <h2 className="card-title text-2xl text-center">{name}</h2>
                     <p>{recipe}</p>
                     <p>Price: {price}</p>
                     <div className="card-actions justify-end">
