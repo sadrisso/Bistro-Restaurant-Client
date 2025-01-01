@@ -15,7 +15,7 @@ const MenuCategory = ({ items, title, img }) => {
                     items.map((item, i) => <MenuItem key={i} item={item} />)
                 }
             </div>
-            <button className='btn'><Link to={`/order/${title}`}>Order</Link></button>
+            <button className='btn border-b-orange-400 border-4 m-3'><Link to={`/order/${title}`}>Order</Link></button>
         </div>
     );
 };

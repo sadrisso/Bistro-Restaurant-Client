@@ -1,16 +1,18 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../auth/AuthProvider";
 
 
 const Navbar = () => {
 
     const { user, signOutUser } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handleLogout = () => {
         signOutUser()
             .then(() => {
                 console.log("Logged Out Successfull")
+                navigate("/login")
             })
     }
 
@@ -19,6 +21,12 @@ const Navbar = () => {
         <Link to="/menu">OurMenu</Link>
         <Link to="/order/Dessert">OrderFood</Link>
         <Link to="/contact">Contact</Link>
+        <Link to="/">
+            <div className="flex items-center">
+                <i className="fa-solid fa-cart-arrow-down mr-1"></i>
+                <div className="badge">+0</div>
+            </div>
+        </Link>
         {
             user ? <button className="btn btn-sm" onClick={handleLogout}>Logout</button> : <Link to="/register">Register</Link>
         }
