@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../auth/AuthProvider";
 
 
@@ -8,9 +8,8 @@ const Login = () => {
 
     const { signIn } = useContext(AuthContext)
     const navigate = useNavigate()
-    // const location = useLocation()
-    // const from = location.pathname || "/"
-    // console.log(from)
+    const location = useLocation()
+    const from = location.state || "";
 
 
     const handleLogin = (e) => {
@@ -25,7 +24,7 @@ const Login = () => {
         signIn(email, password)
             .then((res) => {
                 console.log("User Login --> ", res.user)
-                navigate("/")
+                navigate(from)
             })
             .catch((err) => {
                 console.log(err)
