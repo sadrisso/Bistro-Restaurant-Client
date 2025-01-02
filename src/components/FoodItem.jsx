@@ -1,21 +1,36 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
 import { useContext } from "react";
 import { AuthContext } from "../auth/AuthProvider";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
+import useAxiosSecure from '../hooks/useAxiosSecure';
 
 
 const FoodItem = ({ item }) => {
 
-    const { price, recipe, name, image } = item;
+    const { price, recipe, name, image, _id } = item;
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const axiosSecure = useAxiosSecure();
 
     const handleAddToCart = (food) => {
         if (user) {
-            console.log(food)
+            const cartItem = {
+                menuId: _id,
+                email: user?.email,
+                price,
+                name,
+                recipe
+            }
+
+            axiosSecure.post("/cartItems", cartItem)
+                .then(res => {
+                    console.log(res.data)
+                    alert("Successfully Added to Cart")
+                })
         }
         else {
             Swal.fire({
@@ -28,7 +43,7 @@ const FoodItem = ({ item }) => {
                 confirmButtonText: "Login"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    navigate("/login", {state: location.pathname})
+                    navigate("/login", { state: location.pathname })
                 }
             });
         }

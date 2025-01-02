@@ -1,12 +1,14 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../auth/AuthProvider";
+import useCart from "../hooks/useCart";
 
 
 const Navbar = () => {
 
     const { user, signOutUser } = useContext(AuthContext)
     const navigate = useNavigate()
+    const [data] = useCart()
 
     const handleLogout = () => {
         signOutUser()
@@ -24,7 +26,7 @@ const Navbar = () => {
         <Link to="/">
             <div className="flex items-center">
                 <i className="fa-solid fa-cart-arrow-down mr-1"></i>
-                <div className="badge">+0</div>
+                <div className="badge">+{data?.length}</div>
             </div>
         </Link>
         {
