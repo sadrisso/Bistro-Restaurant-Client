@@ -8,8 +8,8 @@ const Navbar = () => {
 
     const { user, signOutUser } = useContext(AuthContext)
     const navigate = useNavigate()
-    const [data] = useCart()
-    console.log("data", data)
+    const [cart] = useCart()
+    console.log("data", cart)
 
     const handleLogout = () => {
         signOutUser()
@@ -28,7 +28,7 @@ const Navbar = () => {
         <Link to="/">
             <div className="flex items-center">
                 <i className="fa-solid fa-cart-arrow-down mr-1"></i>
-                <div className="badge">+{data?.length}</div>
+                <div className="badge">+{cart?.length}</div>
             </div>
         </Link>
         {

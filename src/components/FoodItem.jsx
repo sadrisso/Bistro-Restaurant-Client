@@ -6,6 +6,7 @@ import { AuthContext } from "../auth/AuthProvider";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosSecure from '../hooks/useAxiosSecure';
+import useCart from "../hooks/useCart";
 
 
 const FoodItem = ({ item }) => {
@@ -15,6 +16,7 @@ const FoodItem = ({ item }) => {
     const navigate = useNavigate();
     const location = useLocation();
     const axiosSecure = useAxiosSecure();
+    const [, refetch] = useCart()
 
     const handleAddToCart = () => {
         if (user) {
@@ -31,6 +33,7 @@ const FoodItem = ({ item }) => {
                 .then(res => {
                     console.log(res.data)
                     alert("Successfully Added to Cart")
+                    refetch();
                 })
         }
         else {

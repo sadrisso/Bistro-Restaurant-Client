@@ -1,15 +1,47 @@
+import { FaPen, FaTrash } from "react-icons/fa";
 import useCart from "../hooks/useCart";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 
 const Cart = () => {
 
-    const [cartItem] = useCart()
-    const totalPrice = cartItem.reduce((total, item) => total + item.price, 0)
+    const [cart, refetch] = useCart()
+    const axiosSecure = useAxiosSecure()
+    const totalPrice = cart.reduce((total, item) => total + item.price, 0)
+
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/cartItems/${id}`)
+                    .then(res => {
+                        console.log(res.data)
+                        if (res.data.deletedCount > 1) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                        refetch();
+                    })
+
+            }
+        });
+    }
 
     return (
-        <div>
+        <div className="mt-5">
             <div>
-                <h1 className="text-3xl font-bold">Total Cart Item: {cartItem.length}</h1>
+                <h1 className="text-3xl font-bold">Total Cart Item: {cart.length}</h1>
                 <p>Total Amount: ${totalPrice}</p>
                 <button className="btn btn-xs mt-2">Pay Now</button>
             </div>
@@ -20,26 +52,16 @@ const Cart = () => {
                         {/* head */}
                         <thead>
                             <tr>
-                                <th>
-                                    <label>
-                                        <input type="checkbox" className="checkbox" />
-                                    </label>
-                                </th>
                                 <th>Item</th>
                                 <th>Recipe</th>
-                                <th>Favorite Color</th>
-                                <th></th>
+                                <th>Price</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
-                                cartItem.map((item, i) =>
+                                cart.map((item, i) =>
                                     <tr key={i}>
-                                        <th>
-                                            <label>
-                                                <input type="checkbox" className="checkbox" />
-                                            </label>
-                                        </th>
                                         <td>
                                             <div className="flex items-center gap-3">
                                                 <div className="avatar">
@@ -51,18 +73,16 @@ const Cart = () => {
                                                 </div>
                                                 <div>
                                                     <div className="font-bold">{item?.name}</div>
-                                                    <div className="text-sm opacity-50">Price: ${item?.price}</div>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
                                             {item?.recipe}
-                                            <br />
-                                            <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
                                         </td>
-                                        <td>Purple</td>
+                                        <td><div className="text-sm opacity-50">Price: ${item?.price}</div></td>
                                         <th>
-                                            <button className="btn btn-ghost btn-xs">details</button>
+                                            <button className="text-green-500 btn-xs"><FaPen /></button>
+                                            <button className="text-red-500 btn-xs" onClick={() => handleDelete(item?._id)}><FaTrash /></button>
                                         </th>
                                     </tr>)
                             }
