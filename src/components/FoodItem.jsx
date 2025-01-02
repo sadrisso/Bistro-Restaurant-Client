@@ -16,14 +16,15 @@ const FoodItem = ({ item }) => {
     const location = useLocation();
     const axiosSecure = useAxiosSecure();
 
-    const handleAddToCart = (food) => {
+    const handleAddToCart = () => {
         if (user) {
             const cartItem = {
                 menuId: _id,
                 email: user?.email,
                 price,
                 name,
-                recipe
+                recipe,
+                image
             }
 
             axiosSecure.post("/cartItems", cartItem)

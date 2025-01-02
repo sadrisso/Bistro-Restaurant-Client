@@ -9,6 +9,7 @@ const Navbar = () => {
     const { user, signOutUser } = useContext(AuthContext)
     const navigate = useNavigate()
     const [data] = useCart()
+    console.log("data", data)
 
     const handleLogout = () => {
         signOutUser()
@@ -23,6 +24,7 @@ const Navbar = () => {
         <Link to="/menu">OurMenu</Link>
         <Link to="/order/Dessert">OrderFood</Link>
         <Link to="/contact">Contact</Link>
+        <Link to="/dashboard">Dashboard</Link>
         <Link to="/">
             <div className="flex items-center">
                 <i className="fa-solid fa-cart-arrow-down mr-1"></i>
@@ -30,7 +32,12 @@ const Navbar = () => {
             </div>
         </Link>
         {
-            user ? <button className="btn btn-sm" onClick={handleLogout}>Logout</button> : <Link to="/register">Register</Link>
+            user ?
+                <div className="text-center">
+                    <button className="btn btn-sm" onClick={handleLogout}>Logout</button>
+                    <p>{user?.email}</p>
+                </div>
+                : <Link to="/register">Register</Link>
         }
     </div>
 
