@@ -16,7 +16,7 @@ const FoodItem = ({ item }) => {
     const navigate = useNavigate();
     const location = useLocation();
     const axiosSecure = useAxiosSecure();
-    const [, refetch] = useCart()
+    const [cart, getCartItem] = useCart();
 
     const handleAddToCart = () => {
         if (user) {
@@ -32,8 +32,23 @@ const FoodItem = ({ item }) => {
             axiosSecure.post("/cartItems", cartItem)
                 .then(res => {
                     console.log(res.data)
-                    alert("Successfully Added to Cart")
-                    refetch();
+                    Swal.fire({
+                        title: "Are you sure?",
+                        text: "want to purchase",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Yes"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire({
+                                title: "Added to the Cart!",
+                                icon: "success"
+                            });
+                        }
+                    });
+                    getCartItem();
                 })
         }
         else {

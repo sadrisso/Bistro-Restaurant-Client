@@ -6,7 +6,7 @@ import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const Cart = () => {
 
-    const [cart, refetch] = useCart()
+    const [cart, getCartItem] = useCart()
     const axiosSecure = useAxiosSecure()
     const totalPrice = cart.reduce((total, item) => total + item.price, 0)
 
@@ -31,7 +31,7 @@ const Cart = () => {
                                 icon: "success"
                             });
                         }
-                        refetch();
+                        getCartItem();
                     })
 
             }
