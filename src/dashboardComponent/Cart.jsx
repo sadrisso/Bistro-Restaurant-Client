@@ -1,12 +1,13 @@
-import { FaPen, FaTrash } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import useCart from "../hooks/useCart";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 
+
 const Cart = () => {
 
-    const [cart, getCartItem] = useCart()
+    const [cart, refetch] = useCart()
     const axiosSecure = useAxiosSecure()
     const totalPrice = cart.reduce((total, item) => total + item.price, 0)
 
@@ -31,9 +32,8 @@ const Cart = () => {
                                 icon: "success"
                             });
                         }
-                        getCartItem();
+                        refetch();
                     })
-
             }
         });
     }
@@ -81,7 +81,6 @@ const Cart = () => {
                                         </td>
                                         <td><div className="text-sm opacity-50">Price: ${item?.price}</div></td>
                                         <th>
-                                            <button className="text-green-500 btn-xs"><FaPen /></button>
                                             <button className="text-red-500 btn-xs" onClick={() => handleDelete(item?._id)}><FaTrash /></button>
                                         </th>
                                     </tr>)

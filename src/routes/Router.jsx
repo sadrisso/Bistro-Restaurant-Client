@@ -50,7 +50,11 @@ export const router = createBrowserRouter([
             {
                 path: "/dashboard",
                 element: <Cart />
-            }
+            },
+            // {
+            //     path: "/update/:id",
+            //     element: <UpdateCart />
+            // }
         ]
     }
 ]);

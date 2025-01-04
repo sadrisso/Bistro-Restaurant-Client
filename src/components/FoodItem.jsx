@@ -16,7 +16,7 @@ const FoodItem = ({ item }) => {
     const navigate = useNavigate();
     const location = useLocation();
     const axiosSecure = useAxiosSecure();
-    const [cart, getCartItem] = useCart();
+    const [, refetch] = useCart();
 
     const handleAddToCart = () => {
         if (user) {
@@ -47,8 +47,9 @@ const FoodItem = ({ item }) => {
                                 icon: "success"
                             });
                         }
+                        refetch();
                     });
-                    getCartItem();
+
                 })
         }
         else {

@@ -4,11 +4,14 @@ import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../auth/AuthProvider";
 import { useForm } from "react-hook-form";
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 
 const Register = () => {
 
     const navigate = useNavigate()
+    const axiosPublic = useAxiosPublic()
     const { createUser, updateUserProfile } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors }, } = useForm();
 
@@ -16,14 +19,32 @@ const Register = () => {
         createUser(data?.email, data?.password)
             .then((res) => {
                 console.log("User Registration --> ", res.user)
-                navigate("/")
-                updateUserProfile({ displayName: data?.name })
-                    .then(() => {
-                        console.log("Profile Updated")
+
+                //saving user data to the database start
+                const userInfo = {
+                    name: data?.name,
+                    email: data?.email
+                }
+                axiosPublic.post("/users", userInfo)
+                    .then(res => {
+                        if (res?.data?.insertedId) {
+                            Swal.fire("User Registration Successfull!");
+                        }
+                //saving user data to the database end
+
+
+                        //updating user profile start
+                        updateUserProfile({ displayName: data?.name })
+                            .then(() => {
+                                console.log("Profile Updated")
+                            })
+                            .catch((err) => {
+                                console.log(err)
+                            })
+                            navigate("/")
+                        //updating user profile end
                     })
-                    .catch((err) => {
-                        console.log(err)
-                    })
+
             })
             .catch((err) => {
                 console.log(err)
