@@ -9,6 +9,7 @@ import Register from "../pages/Register";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../pages/Dashboard";
 import Cart from "../dashboardComponent/Cart";
+import AllUsers from "../dashboardComponent/AllUsers";
 
 
 
@@ -48,13 +49,16 @@ export const router = createBrowserRouter([
         element: <Dashboard />,
         children: [
             {
-                path: "/dashboard",
+                path: "cart",
                 element: <Cart />
             },
-            // {
-            //     path: "/update/:id",
-            //     element: <UpdateCart />
-            // }
+
+            //admin routes starts from here
+            {
+                path: "users",
+                element: <AllUsers />
+            }
+            //admin routes ends from here
         ]
     }
 ]);
