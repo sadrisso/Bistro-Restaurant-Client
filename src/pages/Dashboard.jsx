@@ -1,7 +1,9 @@
 import { NavLink, Outlet } from "react-router-dom";
 import SectionTitle from "../components/SectionTitle";
-import { FaHome, FaShoppingCart } from "react-icons/fa";
+import { FaHome, FaShoppingBag, FaShoppingCart } from "react-icons/fa";
 import useCart from "../hooks/useCart";
+import { IoMenu } from "react-icons/io5";
+import { IoMdContact } from "react-icons/io";
 
 
 const Dashboard = () => {
@@ -18,7 +20,13 @@ const Dashboard = () => {
                     <li><NavLink to="/" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400">Home</NavLink></li>
                     <li><NavLink to="/" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400">Home</NavLink></li>
                     <li><NavLink to="/" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400">Home</NavLink></li>
-                    <li><NavLink to="/" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400">Home</NavLink></li>
+
+                    <div className="divider"></div>
+
+                    <li><NavLink className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><FaHome /> Home</NavLink></li>
+                    <li><NavLink className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><IoMenu />Menu</NavLink></li>
+                    <li><NavLink className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><FaShoppingBag />Shop</NavLink></li>
+                    <li><NavLink className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><IoMdContact />Contact</NavLink></li>
                 </ul>
             </div>
 

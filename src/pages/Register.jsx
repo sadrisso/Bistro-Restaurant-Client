@@ -6,13 +6,14 @@ import { AuthContext } from "../auth/AuthProvider";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import SocialHandle from "../components/SocialHandle";
 
 
 const Register = () => {
 
     const navigate = useNavigate()
     const axiosPublic = useAxiosPublic()
-    const { createUser, updateUserProfile } = useContext(AuthContext)
+    const { createUser, updateUserProfile, signInGoogle } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors }, } = useForm();
 
     const onSubmit = (data) => {
@@ -28,9 +29,9 @@ const Register = () => {
                 axiosPublic.post("/users", userInfo)
                     .then(res => {
                         if (res?.data?.insertedId) {
-                            Swal.fire("User Registration Successfull!");
+                            Swal.fire("User Registration Successful!");
                         }
-                //saving user data to the database end
+                        //saving user data to the database end
 
 
                         //updating user profile start
@@ -41,7 +42,7 @@ const Register = () => {
                             .catch((err) => {
                                 console.log(err)
                             })
-                            navigate("/")
+                        navigate("/")
                         //updating user profile end
                     })
 
@@ -50,6 +51,7 @@ const Register = () => {
                 console.log(err)
             })
     }
+
 
 
     return (
@@ -98,6 +100,7 @@ const Register = () => {
                         </div>
                         <p>Already have an account? <Link to="/login">Login</Link></p>
                     </form>
+                    <SocialHandle />
                 </div>
 
             </div>
