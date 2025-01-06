@@ -16,7 +16,6 @@ const AllUsers = () => {
         }
     })
 
-    console.log(data)
 
     const handleDelete = (id) => {
         Swal.fire({
@@ -43,6 +42,22 @@ const AllUsers = () => {
                     })
             }
         });
+    }
+
+    const handleMakeAdmin = (user) => {
+        axiosSecure.patch(`/user/admin/${user?._id}`)
+            .then(res => {
+                refetch();
+                if (res?.data?.modifiedCount > 0) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: `${user?.name} is now admin`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
     }
 
 
@@ -74,7 +89,10 @@ const AllUsers = () => {
                                         <td>{item?.name}</td>
                                         <td>{item?.email}</td>
                                         <td>
-                                            <button><FaUsers className="text-xl" /></button>
+                                            {
+                                                item?.role === "admin" ? "Admin" :
+                                                    <button onClick={() => handleMakeAdmin(item)}><FaUsers className="text-xl" /></button>
+                                            }
                                         </td>
                                         <td>
                                             <button onClick={() => handleDelete(item?._id)}><FaTrash className="text-red-500" /></button>
