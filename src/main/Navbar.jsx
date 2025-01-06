@@ -14,7 +14,7 @@ const Navbar = () => {
     const handleLogout = () => {
         signOutUser()
             .then(() => {
-                console.log("Logged Out Successfull")
+                console.log("Logged Out Successful")
                 navigate("/login")
             })
     }
@@ -24,12 +24,13 @@ const Navbar = () => {
         <Link to="/menu">OurMenu</Link>
         <Link to="/order/Dessert">OrderFood</Link>
         <Link to="/contact">Contact</Link>
-        <Link to="/dashboard">Dashboard</Link>
         <Link to="/">
-            <div className="flex items-center">
-                <i className="fa-solid fa-cart-arrow-down mr-1"></i>
-                <div className="badge">+{cart?.length}</div>
-            </div>
+            <Link to="/dashboard">
+                <div className="flex items-center">
+                    <i className="fa-solid fa-cart-arrow-down mr-1"></i>
+                    <div className="badge">+{cart?.length}</div>
+                </div>
+            </Link>
         </Link>
         {
             user ?
