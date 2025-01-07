@@ -7,6 +7,7 @@ import { IoMenu } from "react-icons/io5";
 import { IoMdContact } from "react-icons/io";
 import { FcRating } from "react-icons/fc";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 
 const Dashboard = () => {
@@ -16,6 +17,9 @@ const Dashboard = () => {
 
     return (
         <div className="flex flex-col-reverse md:flex-row bg-base-300 md:min-h-screen">
+            <Helmet>
+                <title>Bistro | Dashboard</title>
+            </Helmet>
             <div className="md:w-72 p-10 md:p-2 md:py-10 px-3 bg-orange-300">
                 <h1 className="font-bold text-2xl uppercase mb-5">Bistro Boss Restaurant</h1>
                 {
