@@ -6,14 +6,14 @@ import useCart from "../hooks/useCart";
 import { IoMenu } from "react-icons/io5";
 import { IoMdContact } from "react-icons/io";
 import { FcRating } from "react-icons/fc";
-import { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import useAdmin from "../hooks/useAdmin";
 
 
 const Dashboard = () => {
 
     const [cart] = useCart()
-    const [admin, setAdmin] = useState(true);
+    const [isAdmin] = useAdmin();
 
     return (
         <div className="flex flex-col-reverse md:flex-row bg-base-300 md:min-h-screen">
@@ -23,7 +23,7 @@ const Dashboard = () => {
             <div className="md:w-72 p-10 md:p-2 md:py-10 px-3 bg-orange-300">
                 <h1 className="font-bold text-2xl uppercase mb-5">Bistro Boss Restaurant</h1>
                 {
-                    admin ?
+                    isAdmin ?
                         <>
                             <ul className="space-y-3">
                                 <li><NavLink to="/dashboard/admin-home" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"> <FaHome /> Admin Home</NavLink></li>
