@@ -47,7 +47,7 @@ const Cart = () => {
             </div>
 
             <div>
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto md:w-3/4 mx-auto">
                     <table className="table">
                         {/* head */}
                         <thead>
