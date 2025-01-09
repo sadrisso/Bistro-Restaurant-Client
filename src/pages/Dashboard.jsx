@@ -26,36 +26,36 @@ const Dashboard = () => {
                     isAdmin ?
                         <>
                             <ul className="space-y-3">
-                                <li><NavLink to="/dashboard/admin-home" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"> <FaHome /> Admin Home</NavLink></li>
-                                <li><NavLink to="/" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"><FaUtensils />Add Items</NavLink></li>
-                                <li><NavLink to="/" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"><FaList /> Manage Items</NavLink></li>
+                                <li><NavLink to="/dashboard/adminHome" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"> <FaHome /> Admin Home</NavLink></li>
+                                <li><NavLink to="/dashboard/addItems" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"><FaUtensils />Add Items</NavLink></li>
+                                <li><NavLink to="/dashboard/manageItems" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"><FaList /> Manage Items</NavLink></li>
                                 <li><NavLink to="/dashboard/users" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"><FaUsers /> All Users</NavLink></li>
-                                <li><NavLink to="/" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"><FaRegCalendarCheck /> Manage Bookings</NavLink></li>
+                                <li><NavLink to="/dashboard/manageBookings" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"><FaRegCalendarCheck /> Manage Bookings</NavLink></li>
 
                                 <div className="divider"></div>
 
-                                <li><NavLink className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><FaHome /> Home</NavLink></li>
-                                <li><NavLink className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><IoMenu />Menu</NavLink></li>
-                                <li><NavLink className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><FaShoppingBag />Shop</NavLink></li>
-                                <li><NavLink className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><IoMdContact />Contact</NavLink></li>
+                                <li><NavLink to="/" className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><FaHome /> Home</NavLink></li>
+                                <li><NavLink to="/dashboard/menu" className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><IoMenu />Menu</NavLink></li>
+                                <li><NavLink to="/dashboard/shop" className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><FaShoppingBag />Shop</NavLink></li>
+                                <li><NavLink to="/dashboard/contact" className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><IoMdContact />Contact</NavLink></li>
                             </ul>
                         </>
                         :
                         <>
                             <ul className="space-y-3">
                                 <li><NavLink to="/" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"> <FaHome /> Home</NavLink></li>
-                                <li><NavLink to="/" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"><FaCalendar />Reservation</NavLink></li>
-                                <li><NavLink to="/" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"><FaMoneyBill /> Payment History</NavLink></li>
+                                <li><NavLink to="/dashboard/reservation" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"><FaCalendar />Reservation</NavLink></li>
+                                <li><NavLink to="/dashboard/paymentHistory" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"><FaMoneyBill /> Payment History</NavLink></li>
                                 <li><NavLink to="/dashboard/cart" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"> <FaShoppingCart /> Cart ({cart?.length})</NavLink></li>
-                                <li><NavLink to="/" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"><FcRating /> Review</NavLink></li>
-                                <li><NavLink to="/" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"><FaRegCalendarCheck /> My Bookings</NavLink></li>
+                                <li><NavLink to="/dashboard/review" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"><FcRating /> Review</NavLink></li>
+                                <li><NavLink to="/dashboard/myBookings" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"><FaRegCalendarCheck /> My Bookings</NavLink></li>
 
                                 <div className="divider"></div>
 
-                                <li><NavLink className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><FaHome /> Home</NavLink></li>
-                                <li><NavLink className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><IoMenu />Menu</NavLink></li>
-                                <li><NavLink className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><FaShoppingBag />Shop</NavLink></li>
-                                <li><NavLink className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><IoMdContact />Contact</NavLink></li>
+                                <li><NavLink to="/dashboard/home" className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><FaHome /> Home</NavLink></li>
+                                <li><NavLink to="/dashboard/menu" className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><IoMenu />Menu</NavLink></li>
+                                <li><NavLink to="/dashboard/shop" className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><FaShoppingBag />Shop</NavLink></li>
+                                <li><NavLink to="/dashboard/contact" className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><IoMdContact />Contact</NavLink></li>
                             </ul>
                         </>
                 }
