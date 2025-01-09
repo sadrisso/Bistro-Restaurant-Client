@@ -29,28 +29,26 @@ const FoodItem = ({ item }) => {
                 image
             }
 
-            axiosSecure.post("/cartItems", cartItem)
-                .then(res => {
-                    console.log(res.data)
-                    Swal.fire({
-                        title: "Are you sure?",
-                        text: "want to purchase",
-                        icon: "warning",
-                        showCancelButton: true,
-                        confirmButtonColor: "#3085d6",
-                        cancelButtonColor: "#d33",
-                        confirmButtonText: "Yes"
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            Swal.fire({
-                                title: "Added to the Cart!",
-                                icon: "success"
-                            });
-                        }
-                        refetch();
-                    });
-
-                })
+            Swal.fire({
+                title: "Are you sure?",
+                text: "want to purchase",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes"
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    const res = await axiosSecure.post("/cartItems", cartItem)
+                    refetch();
+                    if (res.data.insertedId) {
+                        Swal.fire({
+                            title: "Added to the Cart!",
+                            icon: "success"
+                        });
+                    }
+                }
+            });
         }
         else {
             Swal.fire({
