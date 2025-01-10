@@ -2,6 +2,7 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import useMenu from "../hooks/useMenu";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const ManageItems = () => {
 
@@ -17,7 +18,7 @@ const ManageItems = () => {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
-        }).then( async(result) => {
+        }).then(async (result) => {
 
             if (result.isConfirmed) {
 
@@ -73,7 +74,7 @@ const ManageItems = () => {
                                         </td>
                                         <td>{item?.recipe}</td>
                                         <th className="flex gap-1">
-                                            <button className="btn btn-ghost btn-xs"> <FaEdit /> Edit</button>
+                                            <Link to={`/dashboard/updateItem/${item?._id}`}><button className="btn btn-ghost btn-xs"> <FaEdit /> Edit</button></Link>
                                             <button onClick={() => handleDelete(item?._id)} className="btn btn-ghost btn-xs"> <FaTrash /> Delete</button>
                                         </th>
                                     </tr>)
