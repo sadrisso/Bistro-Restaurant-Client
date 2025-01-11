@@ -24,14 +24,15 @@ const Navbar = () => {
         <Link to="/menu">OurMenu</Link>
         <Link to="/order/Dessert">OrderFood</Link>
         <Link to="/contact">Contact</Link>
-        <Link to="/">
+        {
+            user &&
             <Link to="/dashboard">
                 <div className="flex items-center">
                     <i className="fa-solid fa-cart-arrow-down mr-1"></i>
                     <div className="badge">+{cart?.length}</div>
                 </div>
             </Link>
-        </Link>
+        }
         {
             user ?
                 <div className="text-center">
