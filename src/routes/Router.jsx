@@ -15,6 +15,8 @@ import AdminRoute from "./AdminRoute";
 import ManageItems from "../dashboardComponent/ManageItems";
 import UpdateItem from "../dashboardComponent/UpdateItem";
 import Payment from "../dashboardComponent/Payment";
+import UserHome from "../dashboardComponent/UserHome";
+import AdminHome from "../dashboardComponent/AdminHome";
 
 
 
@@ -61,8 +63,16 @@ export const router = createBrowserRouter([
                 path: "payment",
                 element: <Payment />
             },
+            {
+                path: "userHome",
+                element: <UserHome />
+            },
 
             //admin routes starts from here
+            {
+                path: "adminHome",
+                element: <AdminHome />
+            },
             {
                 path: "users",
                 element: <AdminRoute><AllUsers /></AdminRoute>

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
 
@@ -17,6 +18,19 @@ const CheckoutForm = () => {
 
         if (card == null) {
             return;
+        }
+
+        // Use your card Element with other Stripe.js APIs
+        const { error, paymentMethod } = await stripe.createPaymentMethod({
+            type: 'card',
+            card,
+        });
+
+        if (error) {
+            console.log("Error", error)
+        }
+        else {
+            console.log("Payment Method", paymentMethod)
         }
     }
 

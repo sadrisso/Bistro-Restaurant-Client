@@ -43,7 +43,7 @@ const Dashboard = () => {
                         :
                         <>
                             <ul className="space-y-3">
-                                <li><NavLink to="/" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"> <FaHome /> Home</NavLink></li>
+                                <li><NavLink to="/dashboard/userHome" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"> <FaHome />User Home</NavLink></li>
                                 <li><NavLink to="/dashboard/reservation" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"><FaCalendar />Reservation</NavLink></li>
                                 <li><NavLink to="/dashboard/paymentHistory" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"><FaMoneyBill /> Payment History</NavLink></li>
                                 <li><NavLink to="/dashboard" className="flex items-center gap-2 text-xl bg-blue-400 p-3 rounded-lg hover:bg-gray-400"> <FaShoppingCart /> Cart ({cart?.length})</NavLink></li>
@@ -52,7 +52,7 @@ const Dashboard = () => {
 
                                 <div className="divider"></div>
 
-                                <li><NavLink to="/dashboard/home" className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><FaHome /> Home</NavLink></li>
+                                <li><NavLink to="/" className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><FaHome /> Home</NavLink></li>
                                 <li><NavLink to="/dashboard/menu" className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><IoMenu />Menu</NavLink></li>
                                 <li><NavLink to="/dashboard/shop" className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><FaShoppingBag />Shop</NavLink></li>
                                 <li><NavLink to="/dashboard/contact" className="flex items-center gap-2 text-xl p-3 rounded-lg hover:bg-gray-400"><IoMdContact />Contact</NavLink></li>

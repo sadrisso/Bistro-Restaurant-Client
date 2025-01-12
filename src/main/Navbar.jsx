@@ -19,29 +19,31 @@ const Navbar = () => {
             })
     }
 
-    const links = <div className="flex gap-5 items-center text-black md:text-white">
-        <Link to="/">Home</Link>
-        <Link to="/menu">OurMenu</Link>
-        <Link to="/order/Dessert">OrderFood</Link>
-        <Link to="/contact">Contact</Link>
-        {
-            user &&
-            <Link to="/dashboard">
-                <div className="flex items-center">
-                    <i className="fa-solid fa-cart-arrow-down mr-1"></i>
-                    <div className="badge">+{cart?.length}</div>
-                </div>
-            </Link>
-        }
-        {
-            user ?
-                <div className="text-center">
-                    <button className="btn btn-sm" onClick={handleLogout}>Logout</button>
-                    <p>{user?.email}</p>
-                </div>
-                : <Link to="/register">Register</Link>
-        }
-    </div>
+    const links =
+        <div className="flex gap-5 items-center text-black md:text-white">
+            <Link to="/">Home</Link>
+            <Link to="/menu">OurMenu</Link>
+            <Link to="/order/Dessert">OrderFood</Link>
+            <Link to="/contact">Contact</Link>
+
+            {
+                user &&
+                <Link to="/dashboard">
+                    <div className="flex items-center">
+                        <i className="fa-solid fa-cart-arrow-down mr-1"></i>
+                        <div className="badge">+{cart?.length}</div>
+                    </div>
+                </Link>
+            }
+            {
+                user ?
+                    <div className="text-center">
+                        <button className="btn btn-sm" onClick={handleLogout}>Logout</button>
+                        <p>{user?.email}</p>
+                    </div>
+                    : <Link to="/register">Register</Link>
+            }
+        </div>
 
 
     return (
